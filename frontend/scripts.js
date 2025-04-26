@@ -47,10 +47,11 @@ document.addEventListener("DOMContentLoaded", function () {
     formData.append("image", file);
 
     // 👇 IMPORTANT: Use FULL backend URL here
-    fetch("https://your-backend-name.onrender.com/predict", {
-      method: "POST",
-      body: formData,
-    })
+    fetch("https://data-forge-1nto.onrender.com/predict", {
+  method: "POST",
+  body: formData,
+})
+
       .then((response) => response.json())  // Assuming the response is in JSON format
       .then((data) => {
         const style = data.style;
