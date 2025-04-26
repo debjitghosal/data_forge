@@ -52,11 +52,6 @@
 
   <!-- Upload Section -->
   <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 text-center">
-<!--    <h1 class="font-extrabold text-4xl leading-tight mb-4 text-gray-500">Upload Your Artwork</h1>
-    <p class="text-gray-600 text-lg max-w-xl mx-auto mb-12">
-      Drag and drop your image or click to browse. Get instant AI-powered style classification.
-    </p>  -->
-
     <!-- Upload Box -->
     <section
       id="upload-box"
@@ -80,6 +75,41 @@
       </div>
     </section>
   </main>
+
+  <!-- Result Section -->
+  <section id="result-section" class="mt-16 max-w-3xl mx-auto text-center text-white">
+    <h2 class="text-2xl font-semibold mb-4">Prediction Results</h2>
+    
+    <!-- Prediction Result Box -->
+    <section
+      id="result-box"
+      class="border border-dashed border-gray-300 rounded-lg py-8 px-6 max-w-2xl mx-auto bg-white bg-opacity-10 shadow-lg"
+      role="button"
+      tabindex="0"
+    >
+      <div class="flex flex-col items-center justify-center space-y-4">
+        <p class="font-semibold text-black text-xl" id="result-text">
+          <!-- The result will be dynamically updated here -->
+          <span id="result-placeholder">Result</span>
+        </p>
+      </div>
+    </section>
+  </section>
+
+
+  <section id="result-section" class="mt-16 max-w-3xl mx-auto text-center text-white">
+    <h2 class="text-2xl font-semibold mb-4"></h2>
+    
+    <!-- Prediction Result Box -->
+    <section
+      id="result-box"
+      class=" py-8 px-6 max-w-2xl mx-auto "
+    >
+      
+    </section>
+  </section>
+  
+
 
   <!-- JS File -->
   <script src="scripts.js"></script>
