@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  
+  <title>Instant Insights for Inspired Art</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome + Google Fonts -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen bg-gradient-to-b from-blue-400 to-blue-300">
+  <!-- Artistic Background -->
+  <img
+    alt="Digital art of a blue woman with flowing hair and pink clouds in the sky"
+    class="absolute inset-0 w-full h-full object-cover -z-10"
+    src="https://storage.googleapis.com/a1aa/image/78007628-56fc-4522-8d5d-0bfb13ad1cc1.jpg"
+    width="1920"
+    height="1080"
+  />
+
+  <!-- Header -->
+  <header class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto text-white">
+    <div class="flex items-center space-x-8 text-sm font-normal">
+      <div class="font-semibold text-lg border border-white rounded-md px-3 py-1">ArtIQ</div>
+      <nav class="flex space-x-8">
+        <a class="border-b-2 border-white pb-1" href="#">Home</a>
+        <a class="hover:underline" href="about.html"></a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="flex flex-col items-center justify-center text-center text-white mt-24 px-4 max-w-5xl mx-auto">
+    <h1 class="text-[5vw] md:text-[6vw] lg:text-[7vw] font-light leading-tight">
+      Instant Insights for Inspired Art
+    </h1>
+    <p class="mt-4 text-lg md:text-xl font-normal">
+      AI-Powered Art Classification — Fast, Simple, Smart
+    </p>
+  </main>
+
+  <!-- Upload Section -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 text-center">
+<!--    <h1 class="font-extrabold text-4xl leading-tight mb-4 text-gray-500">Upload Your Artwork</h1>
+    <p class="text-gray-600 text-lg max-w-xl mx-auto mb-12">
+      Drag and drop your image or click to browse. Get instant AI-powered style classification.
+    </p>  -->
+
+    <!-- Upload Box -->
+    <section
+      id="upload-box"
+      class="border border-dashed border-gray-300 rounded-lg py-16 px-8 max-w-3xl mx-auto cursor-pointer hover:border-gray-400 bg-white bg-opacity-10"
+      role="button"
+      tabindex="0"
+    >
+      <div class="flex flex-col items-center justify-center space-y-4">
+        <div class="bg-gray-300 rounded-full p-4">
+          <i class="fas fa-upload text-2xl text-gray-800"></i>
+        </div>
+        <p class="font-semibold text-black">Drag and drop your artwork</p>
+        <p class="text-gray-5000 text-sm">or click to browse (PNG, JPG, JPEG)</p>
+        <button
+          id="select-file-btn"
+          class="mt-4 px-4 py-2 border border-gray-300 rounded-md text-sm font-semibold text-black bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-500"
+          type="button" 
+        >
+          Select File
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- JS File -->
+  <script src="scripts.js"></script>
+</body>
+</html>
