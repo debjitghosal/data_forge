@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: artiq-backend
+    env: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: python backend/app.py
+    envVars:
+      - key: FLASK_ENV
+        value: production
+    plan: free
