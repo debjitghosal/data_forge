@@ -46,14 +46,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const formData = new FormData();
     formData.append("image", file);
 
-    // Send POST request to Flask backend (adjust URL as needed)
-    fetch("http://your-flask-backend-url/predict", {
+    // 👇 IMPORTANT: Use FULL backend URL here
+    fetch("https://your-backend-name.onrender.com/predict", {
       method: "POST",
       body: formData,
     })
       .then((response) => response.json())  // Assuming the response is in JSON format
       .then((data) => {
-        // Assuming the response contains 'style' and 'confidence' fields
         const style = data.style;
         const confidence = data.confidence;
         
