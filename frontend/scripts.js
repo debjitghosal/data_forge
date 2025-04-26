@@ -1,44 +1,68 @@
-// scripts.js
 document.addEventListener("DOMContentLoaded", function () {
-    const uploadBox = document.getElementById("upload-box");
-    const selectButton = document.getElementById("select-file-btn");
-  
-    // Create hidden file input
-    const fileInput = document.createElement("input");
-    fileInput.type = "file";
-    fileInput.accept = ".png, .jpg, .jpeg";
-    fileInput.style.display = "none";
-    document.body.appendChild(fileInput);
-  
-    // Click Events
-    selectButton.addEventListener("click", () => fileInput.click());
-    uploadBox.addEventListener("click", () => fileInput.click());
-  
-    // File Selected
-    fileInput.addEventListener("change", () => {
-      if (fileInput.files.length > 0) {
-        const file = fileInput.files[0];
-        alert(`You selected: ${file.name}`);
-        // TODO: Send to backend or display preview
-      }
-    });
-  
-    // Drag & Drop
-    uploadBox.addEventListener("dragover", (e) => {
-      e.preventDefault();
-      uploadBox.classList.add("border-indigo-500");
-    });
-  
-    uploadBox.addEventListener("dragleave", () => {
-      uploadBox.classList.remove("border-indigo-500");
-    });
-  
-    uploadBox.addEventListener("drop", (e) => {
-      e.preventDefault();
-      uploadBox.classList.remove("border-indigo-500");
-      const file = e.dataTransfer.files[0];
-      alert(`You dropped: ${file.name}`);
-      // TODO: Send to backend or display preview
-    });
+  const uploadBox = document.getElementById("upload-box");
+  const selectButton = document.getElementById("select-file-btn");
+  const resultText = document.getElementById("result-text"); // Where the result will be displayed
+
+  // Create hidden file input
+  const fileInput = document.createElement("input");
+  fileInput.type = "file";
+  fileInput.accept = ".png, .jpg, .jpeg";
+  fileInput.style.display = "none";
+  document.body.appendChild(fileInput);
+
+  // Click Events
+  selectButton.addEventListener("click", () => fileInput.click());
+  uploadBox.addEventListener("click", () => fileInput.click());
+
+  // File Selected
+  fileInput.addEventListener("change", () => {
+    if (fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      alert(`You selected: ${file.name}`);
+      uploadFile(file);  // Call function to upload the file
+    }
   });
-  
+
+  // Drag & Drop
+  uploadBox.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    uploadBox.classList.add("border-indigo-500");
+  });
+
+  uploadBox.addEventListener("dragleave", () => {
+    uploadBox.classList.remove("border-indigo-500");
+  });
+
+  uploadBox.addEventListener("drop", (e) => {
+    e.preventDefault();
+    uploadBox.classList.remove("border-indigo-500");
+    const file = e.dataTransfer.files[0];
+    alert(`You dropped: ${file.name}`);
+    uploadFile(file);  // Call function to upload the file
+  });
+
+  // Function to upload the image to the Flask backend
+  function uploadFile(file) {
+    const formData = new FormData();
+    formData.append("image", file);
+
+    // Send POST request to Flask backend (adjust URL as needed)
+    fetch("http://your-flask-backend-url/predict", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())  // Assuming the response is in JSON format
+      .then((data) => {
+        // Assuming the response contains 'style' and 'confidence' fields
+        const style = data.style;
+        const confidence = data.confidence;
+        
+        // Display result (or handle error if necessary)
+        resultText.innerHTML = `Predicted Style: ${style}<br>Confidence: ${confidence}%`;
+      })
+      .catch((error) => {
+        console.error("Error uploading file:", error);
+        resultText.innerHTML = "Error uploading file. Please try again.";
+      });
+  }
+});
